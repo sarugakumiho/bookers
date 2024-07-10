@@ -6,12 +6,11 @@ class BooksController < ApplicationController
   
   def create
     @book = Book.new(book_params)
-    @book.save
     if @book.save
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     else
-      flash.now[:alert] = "--"
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -35,9 +34,10 @@ class BooksController < ApplicationController
   end
   
   def destroy
-    book = Book.find(params[:id])
-    book.destroy
-    redirect_to '/book'
+    @book = Book.find(params[:id])
+    Rails.logger.debug("book: #{@book}")
+    @book.destroy
+    redirect_to books_path
   end
   
   private
