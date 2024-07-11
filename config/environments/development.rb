@@ -29,9 +29,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
-　config.action_dispatch.debug_exceptions = false
-　
+  
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -76,4 +74,5 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "f0184ffe2578446e87fd348c25f61857.vfs.cloud9.ap-northeast-1.amazonaws.com"
+  config.hosts.clear
 end
